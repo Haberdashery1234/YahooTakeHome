@@ -8,56 +8,34 @@
 import SwiftUI
 
 struct CompareView: View {
-    var viewModel: Company_ViewModel
-    @State private var selectedCompanies = Set<String>()
+//    @State private var viewModel: ViewModel
+//    @State private var selectedCompanies = Set<String>()
     
     var body: some View {
-        VStack {
-            // Selection area
-            List(viewModel.sortedCompanies, selection: $selectedCompanies) { company in
-                HStack {
-                    Text(company.name)
-                    Spacer()
-                    if selectedCompanies.contains(company.symbol) {
-                        Image(systemName: "checkmark")
-                            .foregroundColor(.blue)
-                    }
-                }
-                .tag(company.symbol)
-                .contentShape(Rectangle())
-                .onTapGesture {
-                    if selectedCompanies.contains(company.symbol) {
-                        selectedCompanies.remove(company.symbol)
-                    } else {
-                        selectedCompanies.insert(company.symbol)
-                    }
-                }
-            }
-            .listStyle(.plain)
-            .frame(height: 300)
-            
-            // Comparison area
-            if selectedCompanies.count >= 2 {
-                ScrollView {
-                    ComparisonChart(companies: viewModel.companies.filter { selectedCompanies.contains($0.symbol) })
-                        .frame(height: 300)
-                        .padding()
-                    
-                    ComparisonTable(companies: viewModel.companies.filter { selectedCompanies.contains($0.symbol) })
-                        .padding()
-                }
-            } else {
-                ContentUnavailableView {
-                    Label("Select Companies", systemImage: "chart.bar.doc.horizontal")
-                } description: {
-                    Text("Select 2 or more companies to compare")
-                } actions: {
-                    Text("Tap companies in the list above")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                }
-            }
-        }
+        Text("I'm in compare mode")
+//        VStack {
+//            // Comparison area
+//            if selectedCompanies.count >= 2 {
+//                ScrollView {
+//                    ComparisonChart(companies: viewModel.companies.filter { selectedCompanies.contains($0.symbol) })
+//                        .frame(height: 300)
+//                        .padding()
+//                    
+//                    ComparisonTable(companies: viewModel.companies.filter { selectedCompanies.contains($0.symbol) })
+//                        .padding()
+//                }
+//            } else {
+//                ContentUnavailableView {
+//                    Label("Select Companies", systemImage: "chart.bar.doc.horizontal")
+//                } description: {
+//                    Text("Select 2 or more companies to compare")
+//                } actions: {
+//                    Text("Tap companies in the list above")
+//                        .font(.caption)
+//                        .foregroundStyle(.secondary)
+//                }
+//            }
+//        }
     }
 }
 

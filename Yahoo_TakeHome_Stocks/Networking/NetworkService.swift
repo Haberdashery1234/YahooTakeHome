@@ -7,9 +7,11 @@
 
 import Foundation
 
-class CompanyService {
+class NetworkService {
+    let baseUrl = "https://us-central1-fbconfig-90755.cloudfunctions.net/"
+    
     func fetchCompanyData() async throws -> [Company] {
-        let urlString = "https://us-central1-fbconfig-90755.cloudfunctions.net/getAllCompanies"
+        let urlString = baseUrl + "getAllCompanies"
         
         guard let url = URL(string: urlString) else {
             throw URLError(.badURL)

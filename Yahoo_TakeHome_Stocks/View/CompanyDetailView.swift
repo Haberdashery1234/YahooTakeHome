@@ -9,7 +9,12 @@ import SwiftUI
 
 struct CompanyDetailView: View {
     let company: Company
-    @State var viewModel: Company_ViewModel
+    @State var viewModel: ViewModel
+    
+    init(company: Company) {
+        self.company = company
+        viewModel = ViewModel(company: company)
+    }
     
     var body: some View {
         ScrollView {
@@ -37,9 +42,9 @@ struct CompanyDetailView: View {
                     Spacer()
                     
                     Button(action: {
-                        viewModel.toggleFavorite(for: company)
+                        viewModel.toggleFavorite()
                     }) {
-                        Image(systemName: viewModel.isFavorite(company: company) ? "star.fill" : "star")
+                        Image(systemName: viewModel.isFavorite() ? "star.fill" : "star")
                             .font(.title)
                             .foregroundColor(.yellow)
                     }

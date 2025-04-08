@@ -8,16 +8,21 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @State var viewModel: Company_ViewModel
+    @Binding var settings: AppSettings
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         NavigationView {
             Form {
+                Section(header: Text("Filter")) {
+                    Toggle("Show only Favorites", isOn: $settings.showOnlyFavorites)
+                        .toggleStyle(SwitchToggleStyle(tint: .accentColor))
+                }
+                
                 Section(header: Text("Sort Companies")) {
-                    Picker("Sort Order", selection: $viewModel.sortOrder) {
-                        ForEach(PreferencesManager.SortOrder.allCases) { order in
-                            Text(order.rawValue).tag(order)
+                    Picker("Sort Order", selection: $settings.sortBy) {
+                        ForEach(AppSettings.SortType.allCases) { order in
+                            Text(order.description).tag(order)
                         }
                     }
                     .pickerStyle(SegmentedPickerStyle())

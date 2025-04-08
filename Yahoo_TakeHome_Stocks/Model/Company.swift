@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MarketCap: Codable, Equatable {
+struct MarketCap: Codable, Equatable, Hashable {
     let fmt: String
     let longFmt: String
     let raw: Double
@@ -31,7 +31,7 @@ struct MarketCap: Codable, Equatable {
     }
 }
 
-struct Company: Identifiable, Codable, Equatable {
+struct Company: Identifiable, Codable, Equatable, Hashable {
     var id: String { symbol }
     let symbol: String
     let name: String
