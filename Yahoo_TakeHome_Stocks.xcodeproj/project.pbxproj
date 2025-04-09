@@ -6,10 +6,6 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		03FE5FAC2DA5CF3D0076BE21 /* temp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FE5FAB2DA5CF3D0076BE21 /* temp.swift */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXContainerItemProxy section */
 		03AE6F512DA0577800E22679 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -31,7 +27,6 @@
 		03AE6F3F2DA0577600E22679 /* Yahoo_TakeHome_Stocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yahoo_TakeHome_Stocks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03AE6F502DA0577800E22679 /* Yahoo_TakeHome_StocksTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Yahoo_TakeHome_StocksTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		03AE6F5A2DA0577800E22679 /* Yahoo_TakeHome_StocksUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Yahoo_TakeHome_StocksUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		03FE5FAB2DA5CF3D0076BE21 /* temp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = temp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -80,7 +75,6 @@
 		03AE6F362DA0577600E22679 = {
 			isa = PBXGroup;
 			children = (
-				03FE5FAB2DA5CF3D0076BE21 /* temp.swift */,
 				03AE6F412DA0577600E22679 /* Yahoo_TakeHome_Stocks */,
 				03AE6F532DA0577800E22679 /* Yahoo_TakeHome_StocksTests */,
 				03AE6F5D2DA0577800E22679 /* Yahoo_TakeHome_StocksUITests */,
@@ -242,7 +236,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03FE5FAC2DA5CF3D0076BE21 /* temp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

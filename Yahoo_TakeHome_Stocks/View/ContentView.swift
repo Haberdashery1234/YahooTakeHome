@@ -27,8 +27,24 @@ struct ContentView: View {
         NavigationSplitView {
             Group {
                 if isInCompareMode {
-                    List(appSettings.showOnlyFavorites ? viewModel.favoriteCompanies : viewModel.sortedCompanies, id: \.symbol, selection: $selectedCompanies) { company in
-                        CompanyRow(company: company, isFavorite: viewModel.favorites.contains(company)).tag(company.symbol)
+                    List(appSettings.showOnlyFavorites ? viewModel.favoriteCompanies : viewModel.sortedCompanies, selection: $selectedCompanies) { company in
+                        CompanyRow(company: company, isFavorite: viewModel.favorites.contains(company))
+                            .overlay(
+                                isInCompareMode && selectedCompanies.contains(company) ?
+                                Image(systemName: "checkmark.circle.fill")
+                                    .foregroundColor(.accentColor)
+                                    .padding()
+                                : nil,
+                                alignment: .leading
+                            )
+                            .onTapGesture {
+                                if selectedCompanies.contains(company) {
+                                    selectedCompanies.remove(company)
+                                } else {
+                                    selectedCompanies.insert(company)
+                                }
+                                print(selectedCompanies)
+                            }
                     }
                     .id(isInCompareMode ? "compare" : "list")
                     .environment(\.editMode, .constant(.active))
@@ -64,6 +80,22 @@ struct ContentView: View {
                         Image(systemName: "gear")
                     }
                 }
+                ToolbarItem(placement: .bottomBar) {
+                    ViewThatFits(in: .horizontal) {
+                        // Only show this on iPhone
+                        if isInCompareMode && !selectedCompanies.isEmpty {
+                            NavigationLink(destination: CompareView(selectedCompanies: $selectedCompanies)) {
+                                
+                                Text("Compare \(selectedCompanies.count) Companies")
+                                    .padding()
+                                    .frame(maxWidth: .infinity)
+                                    .background(Color.accentColor)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(8)
+                            }
+                        }
+                    }
+                }
             }
             .sheet(isPresented: $isShowingSettings) {
                 SettingsView(settings: $appSettings)
@@ -81,17 +113,7 @@ struct ContentView: View {
             }
         } detail: {
             if isInCompareMode {
-                if selectedCompanies.count > 0 {
-                    CompareView()
-                } else {
-                    ContentUnavailableView {
-                        Label("No companies selected", systemImage: "questionmark")
-                    } description: {
-                        Text("You have to select multiple companies from the list on the left")
-                    } actions: {
-                        // No actions
-                    }
-                }
+                CompareView(selectedCompanies: $selectedCompanies)
             } else {
                 if let selectedCompany {
                     CompanyDetailView(company: selectedCompany)

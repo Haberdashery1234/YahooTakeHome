@@ -52,4 +52,18 @@ struct Company: Identifiable, Codable, Equatable, Hashable {
         name: "Apple Inc.",
         marketCap: MarketCap(fmt: "$2.6 Trillion", longFmt: "$2.6 Trillion USD", raw: 2600000000000)
     )
+    
+    static let example2 = Company(
+        symbol: "MSFT",
+        name: "Microsoft Corporation",
+        marketCap: MarketCap(fmt: "$2.1 Trillion", longFmt: "$2.1 Trillion USD", raw: 2100000000000)
+    )
+    
+    static let example3 = Company(
+        symbol: "TSLA",
+        name: "Tesla, Inc.",
+        marketCap: MarketCap(fmt: "$679.7 Billion", longFmt: "$679.7 Billion USD", raw: 679700000000)
+    )
+    
+    static let allExamples: Set<Company> = [example, example2, example3]
 }
